@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
     Route::get('/test', function () {
-    return "Cestitam, vas test je uspio";
+    return "Čestitam, Vaš test je uspio";
 });
 Route::get('/', function () {
     return view('welcome');
