@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Videoteka</title>
-    <span>Testirano s Travis CI</span>
+    <span>Seminarski rad</span>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -82,15 +82,14 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Videoteka kod Mikija
+                    Kolekcija filmova
                 </div>
 
                 <div class="links">
                     <a href="{{url("/films")}}">Filmovi</a>
-                    <a href="{{url("/actors")}}">Glumci</a>
-                    <a href="https://travis-ci.org/github/AlgebraPHP2020/sakila">Travis CI</a>
-                    <a href="http://sakila2020.herokuapp.com/">Heroku</a>
-                    <a href="https://github.com/AlgebraPHP2020/sakila">GitHub Sakila</a>
+                    <a href="{{url("/actors")}}">Žanrovi</a>
+                    <a href="https://www.imdb.com/?ref_=nv_home">IMDb</a>
+                    <a href="https://github.com/ivanrozic/Videoteka">GitHub Videoteka</a>
                 </div>
             </div>
         </div>
