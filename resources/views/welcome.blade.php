@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Videoteka</title>
-    <span>Seminarski rad</span>
+    <span>Seminarski rad - Ivan Rozić</span>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -86,8 +86,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{url("/films")}}">Filmovi</a>
-                    <a href="{{url("/actors")}}">Žanrovi</a>
+                    <a href="{{url("/filmovis")}}">Filmovi</a>
+                    <a href="{{url("/zanrs")}}">Žanrovi</a>
                     <a href="https://www.imdb.com/?ref_=nv_home">IMDb</a>
                     <a href="https://github.com/ivanrozic/Videoteka">GitHub Videoteka</a>
                 </div>

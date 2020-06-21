@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::resource('zanrs', 'ZanrController');
+Route::resource('filmovis', 'FilmoviController');
+
     Route::get('/test', function () {
     return "Čestitam, Vaš test je uspio";
 });

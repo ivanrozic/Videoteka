@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Language;
+use App\Filmovi;
 use Faker\Generator as Faker;
 
-$factory->define(Language::class, function (Faker $faker) {
+$factory->define(Filmovi::class, function (Faker $faker) {
     return [
         //
     ];
