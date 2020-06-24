@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 Route::resource('zanrs', 'ZanrController');
 Route::resource('filmovis', 'FilmoviController');
+Route::get('/filmovis/zanr/{zanr}', 'FilmoviController@index')->name('filmovi');
+Route::post('/filmovis/create', 'FilmoviController@create')->name('filmovis.create');
 
     Route::get('/test', function () {
     return "Čestitam, Vaš test je uspio";

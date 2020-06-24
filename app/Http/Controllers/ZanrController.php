@@ -47,7 +47,7 @@ class ZanrController extends Controller
      */
     public function show(Zanr $zanr)
     {
-        //
+        return view('zanr.show', ['zanrovi' => $zanr]);
     }
 
     /**
