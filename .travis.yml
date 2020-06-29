@@ -10,7 +10,7 @@ addons:
   chrome: stable
 
 install:
-  - sudo mysql -e 'create database testing;'
+  - sudo mysql -e 'create database kolekcija;'
   - cp .env.travis .env
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
   - php artisan key:generate

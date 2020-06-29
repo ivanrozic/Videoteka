@@ -66,6 +66,21 @@ CREATE TABLE filmovi (
   KEY idx_zanr (zanr_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
+--
+-- Table structure for table `filmovi_zanr`
+--
+
+CREATE TABLE `filmovi_zanr` (
+	`filmovi_id` SMALLINT(5) NOT NULL,
+	`zanr_id` TINYINT(3) NOT NULL,
+	`last_update` TIMESTAMP NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+	PRIMARY KEY (`filmovi_id`, `zanr_id`) USING BTREE,
+	UNIQUE INDEX `uniquefilm` (`filmovi_id`) USING BTREE
+)
+COLLATE='utf8mb4_unicode_ci'
+ENGINE=InnoDB
+;
+
 
 
 

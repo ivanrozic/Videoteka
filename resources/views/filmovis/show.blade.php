@@ -14,28 +14,21 @@
 <h3>Detalji filma:</h3>
 
 
-<div class="border border-info rounded-md">
-    <h1 class="alert-success"> {{$filmovi->naslov}} </h1><br>
 
-    <p>
-        
-    Godina: <span class="btn btn-outline-success">{{$filmovi->godina}}</span> <br>
-    Trajanje: <span class="btn btn-outline-success">{{$filmovi->trajanje}} min </span><br>
-    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-        @foreach ($filmovi as $page)
-<td> <img src="{{ asset('uploads/appsetting/' . $page->slika) }}" /> </td>
-@endforeach
-        {{ Auth::filmovi()->naslov }} <span class="caret"></span>
-    </a>      
-    </p>
+<p>
 
-    <p>
-        <a href='{{route('filmovis.index')}}'> Natrag na listu filmova
-            <i class="fas fa-hand-point-left"></i></a> 
-    </p>
+    <img src="{{asset('/images/' . $filmovi->slika)}}" width="150" height="220"><br><br>
+    <i>{{$filmovi->naslov}} ({{$filmovi->godina}})</i> <br>
+    <i>Trajanje: {{$filmovi->trajanje}} min</i><br>
+
+</p>
+
+<p>
+    <a href='{{route('filmovis.index')}}'> Natrag na listu filmova
+        <i class="fas fa-hand-point-left"></i></a> 
+</p>
 
 
-</div>
 
 @endsection
 

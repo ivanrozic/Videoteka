@@ -21,13 +21,27 @@
 <div class="alert alert-success">{{ $success }}</div>
 @enderror
 
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
+<style>
+    .content {
+        text-align: center;
+        font-size: 18px;
+    }
+</style>
 
 <div class="container">
     <div class="jumbotron">
         <h1>Filmovi:</h1> <br>
-        <a href='{{route('filmovis.create')}}'>
-            <h4><i class="fas fa-plus"></i> <span class="label label-info">Dodaj novi film</span></a></h4>
-        <br><br>
+        <h4><a href='{{route('filmovis.create')}}'>
+                <i class="fas fa-plus"></i> <span class="label label-info">Dodaj novi film</span></a></h4>
+        <br>
+        <div class="content">
+            @foreach ($filmovi ?? '' as $f)
+            |<a href='{{url("/filmovis/{$f->filmovi_id}")}}'>
+                <u>{{$firstStringCharacter = substr($f->naslov, 0, 1)}}</u></a>
+            @endforeach
+        </div>
         <table class="table table-stripped table-bordered">
             <thead class="thead-dark">
                 <tr>
@@ -35,38 +49,50 @@
                     <th scope="col"> Naslov filma </th>
                     <th scope="col"> Godina </th>
                     <th scope="col"> Trajanje </th>
-                    <th scope="col"> Akcija </th>
+                    <th scope="col"> Obriši </th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach ($filmovi ?? '' as $f)
+            <tbody>@foreach ($filmovi ?? '' as $f)
                 <tr>
-                    <th> <img src="{{ asset('uploads/appsetting/' . $f->slika) }}" widht="100" height="100"></th>
+                    <th> <img src="{{ asset('images/' . $f->slika) }}" widht="200" height="200"></th>
                     <th> {{$f->naslov }}</th>
                     <th> {{$f->godina }}</th>
                     <th> {{$f->trajanje }}</th>
-                    <th>             <form style="display:inline" class="form-inline" name="actor_delete" 
-                                           action="{{url("/filmovis/{$f->filmovi_id}")}}" 
-                                           method="POST" enctype="multipart/form-data">
+                    <th> <form style="display:inline" class="form-inline" name="actor_delete" 
+                               action="{{url("/filmovis/{$f->filmovi_id}")}}" 
+                               method="POST" enctype="multipart/form-data">
                             @method('delete')
                             @csrf
                             <button type="submit" class="btn btn-danger" style="font-size: xx-medium" <span class="label label-info">Obriši</span> 
 
                             </button>
-                        </form>
+                        </form> </th>
                 </tr>
                 @endforeach
             </tbody>
+        </table>
+    </div>
+</div>
 
-            @endsection
 
-            @section('css')
-            <link rel="stylesheet" href="/css/app.css">
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-            @stop
 
-            @section('js')
-            <script> console.log('Hi!');</script>
-            @stop
+<div class="content">
+    @foreach ($filmovi ?? '' as $f)
+    |<a href='{{url("/filmovis/{$f->filmovi_id}")}}'>
+        <u>{{$firstStringCharacter = substr($f->naslov, 0, 1)}}</u></a>
+    @endforeach
+</div>
+
+
+@endsection
+
+@section('css')
+<link rel="stylesheet" href="/css/app.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+@stop
+
+@section('js')
+<script> console.log('Hi!');</script>
+@stop
 
 

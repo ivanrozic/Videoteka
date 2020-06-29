@@ -5,16 +5,15 @@ namespace App\Http\Controllers;
 use App\Zanr;
 use Illuminate\Http\Request;
 
-class ZanrController extends Controller
-{
+class ZanrController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $zanrovi = Zanr::paginate (15);
+    public function index() {
+        $zanrovi = Zanr::all();
         return view('zanr.index', compact('zanrovi'));
     }
 
@@ -23,8 +22,7 @@ class ZanrController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         //
     }
 
@@ -34,8 +32,7 @@ class ZanrController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         //
     }
 
@@ -45,9 +42,9 @@ class ZanrController extends Controller
      * @param  \App\Zanr  $zanr
      * @return \Illuminate\Http\Response
      */
-    public function show(Zanr $zanr)
-    {
-        return view('zanr.show', ['zanrovi' => $zanr]);
+    public function show(Zanr $zanr) {
+        $lista_filmova_odabranog_zanra = $zanr->filmovi()->get();
+        return view('zanr.show', compact('lista_filmova_odabranog_zanra'));
     }
 
     /**
@@ -56,8 +53,7 @@ class ZanrController extends Controller
      * @param  \App\Zanr  $zanr
      * @return \Illuminate\Http\Response
      */
-    public function edit(Zanr $zanr)
-    {
+    public function edit(Zanr $zanr) {
         //
     }
 
@@ -68,8 +64,7 @@ class ZanrController extends Controller
      * @param  \App\Zanr  $zanr
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Zanr $zanr)
-    {
+    public function update(Request $request, Zanr $zanr) {
         //
     }
 
@@ -79,8 +74,8 @@ class ZanrController extends Controller
      * @param  \App\Zanr  $zanr
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Zanr $zanr)
-    {
+    public function destroy(Zanr $zanr) {
         //
     }
+
 }

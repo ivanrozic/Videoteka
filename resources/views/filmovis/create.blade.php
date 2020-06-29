@@ -8,16 +8,16 @@
 @section('content')
 
 @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
 @endif
 @error('message')
-    <div class="alert alert-success">{{ $message }}</div>
+<div class="alert alert-success">{{ $message }}</div>
 @enderror
 
 <h3>Uredi detalje filma:</h3>
@@ -30,22 +30,22 @@
         <br>
         <input maxlength="150" type="text" name="naslov" required="true"
                value=""><br><br>
-<div style="display: inline-block">
-            <label for="zanr_id<"> Žanr:</label> <br>     
-            <select name="zanr_id" required="true">
+
+        <label for="zanr_id<"> Žanr:</label> <br>     
+        <select name="zanr_id" id="zanr_id" required="true">
             <option value=""></option>
-             @foreach ($zanrovi as $zanr)
-            <option value="{{$zanr->zanr_id}}">{{$zanr->naziv}}</option>
+            @foreach (App\Zanr::all() as $z)
+            <option value="{{$z->zanr_id}}">{{$z->naziv}}</option>
             @endforeach
         </select>  
-        </div><br><br>
+        <br><br>
         <label for="godina<"> Godina:</label><br>     
-            <select name="godina">
-                <option value=""></option>
-@for ($godina=1900; $godina <= 2020; $godina++)
-  <option value="<?=$godina;?>"><?=$godina;?></option>
-@endfor
-</select><br><br>
+        <select name="godina">
+            <option value=""></option>
+            @for ($godina=1900; $godina <= 2020; $godina++)
+            <option value="<?= $godina; ?>"><?= $godina; ?></option>
+            @endfor
+        </select><br><br>
         <label for="trajanje"> Trajanje:</label>
         <br>
         <input maxlength="5" type="numeric" name="trajanje" required="true"
@@ -53,8 +53,8 @@
         <label> Slika</label>
         <div class="form-group">
             <input type="file" name="slika" id="slika" class="form-control-file" required>
-          </div>
-          
+        </div>
+
     </div>
     <br>
     <div class="form-group">
@@ -72,7 +72,7 @@
 @section('js')
 <script> console.log('Hi!');</script>
 <script>
-   document.querySelector("#ova_godina").max = new Date().getFullYear();
+    document.querySelector("#ova_godina").max = new Date().getFullYear();
 </script>
 @stopcument.querySelector("#ova_godina").max = new Date().getFullYear();
 </script>

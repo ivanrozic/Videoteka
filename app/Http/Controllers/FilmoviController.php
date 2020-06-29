@@ -13,9 +13,8 @@ class FilmoviController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $filmovi = Filmovi::all();
+    public function index() {
+        $filmovi = Filmovi::paginate(10);
         return view('filmovis.index', compact('filmovi'));
     }
 
@@ -24,10 +23,9 @@ class FilmoviController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Filmovi $filmovi)
-    {
-        $zanrovi= Zanr::all()->sortBy('name');
-        return view('filmovis.create',compact('zanrovi'));
+    public function create() {
+        $lista_zanrova = Zanr::all()->sortBy('name');
+        return view('filmovis.create', compact('lista_zanrova'));
     }
 
     /**
@@ -36,30 +34,28 @@ class FilmoviController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Filmovi $filmovi)
-    {
-        
+    public function store(Request $request, Filmovi $filmovi) {
+
         $validatedData = $request->validate([
-        'naslov'  => 'required|string|max:150|alpha',
-        'zanr_id'  => 'required|numeric',
-        'godina'  => 'required|numeric',
-        'trajanje'  => 'required|numeric',
-        'slika'   =>  'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        
-    ]);        
+            'naslov' => 'required|string|max:150',
+            'zanr_id' => 'required|numeric|between:1,14',
+            'godina' => 'required|numeric',
+            'trajanje' => 'required|numeric',
+            'slika' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
         $filmovi = new Filmovi();
 
-      $filmovi->naslov = $request->input('naslov');
-      $filmovi->zanr_id = $request->input('zanr_id');
-      $filmovi->godina = $request->input('godina');
-      $filmovi->trajanje = $request->input('trajanje');
-      $filmovi->slika = $request->input('slika');
+        $filmovi->naslov = $request->input('naslov');
+        $filmovi->zanr_id = $request->input('zanr_id');
+        $filmovi->godina = $request->input('godina');
+        $filmovi->trajanje = $request->input('trajanje');
+        $filmovi->slika = $request->input('slika');
 
         if ($request->hasfile('slika')) {
             $file = $request->file('slika');
             $extension = $file->getClientOriginalExtension(); // getting image extension
-            $filename = time() . '.' . $extension;
-            $file->move('uploads/appsetting/', $filename);
+            $filename = $request->file('slika')->storeAs('', $request->file('slika')->getClientOriginalName());
+            $file->move('images/', $filename);
 
 //see above line.. path is set.(uploads/appsetting/..)->which goes to public->then create
 //a folder->upload and appsetting, and it wil store the images in your file.
@@ -71,6 +67,10 @@ class FilmoviController extends Controller {
         }
         $filmovi->save();
 
+        $zanr = Zanr::find($request->input('zanr_id'));  // koristimo postojecu
+
+        $filmovi->zanr()->save($zanr);
+
         return redirect()->route('filmovis.index')->with('success', 'Film uspješno dodan!');
     }
 
@@ -80,8 +80,7 @@ class FilmoviController extends Controller {
      * @param  \App\Filmovi  $filmovi
      * @return \Illuminate\Http\Response
      */
-    public function show(Filmovi $filmovi)
-    {
+    public function show(Filmovi $filmovi) {
         $lista_filmova = Filmovi::all()->sortBy('naslov');
         return view('filmovis.show', compact('filmovi'));
     }
@@ -92,9 +91,8 @@ class FilmoviController extends Controller {
      * @param  \App\Filmovi  $filmovi
      * @return \Illuminate\Http\Response
      */
-    public function edit()
-    {
-        
+    public function edit(Filmovi $filmovi) {
+        return view('filmovis.edit', compact('filmovi'));
     }
 
     /**
@@ -104,8 +102,7 @@ class FilmoviController extends Controller {
      * @param  \App\Filmovi  $filmovi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
-    {
+    public function update() {
         //
     }
 

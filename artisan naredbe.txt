@@ -36,7 +36,7 @@ $f1->find(1)->actors()->count();
 $ php artisan make:test FilmTest --unit
 
 php artisan test
-C:/Users/Algebra/Code/sakila/vendor/bin/phpunit.bat --configuration phpunit.xml --testsuite Unit
+C:/Users/Algebra/Code/sakila./vendor/bin/phpunit.bat --configuration phpunit.xml --testsuite Unit
 
 Test created successfully.
 // /tests/unit
