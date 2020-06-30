@@ -18,16 +18,23 @@
 <p>
 
     <img src="{{asset('/images/' . $filmovi->slika)}}" width="150" height="220"><br><br>
-    <i>{{$filmovi->naslov}} ({{$filmovi->godina}})</i> <br>
+    <i><b>{{$filmovi->naslov}} ({{$filmovi->godina}})</b></i> <br>
     <i>Trajanje: {{$filmovi->trajanje}} min</i><br>
+    @foreach ($filmovi->zanr as $f)
+    <i>Žanr: {{$f->naziv}}</i><br>
+
+    @endforeach
 
 </p>
 
 <p>
+    <a href='{{url("/zanrs/{$f->zanr_id}")}}'> Filmovi pod žanrom: {{$f->naziv}}
+        &nbsp;<i class="fas fa-hand-point-left"></i></a> 
+</p>
+<p>
     <a href='{{route('filmovis.index')}}'> Natrag na listu filmova
         <i class="fas fa-hand-point-left"></i></a> 
 </p>
-
 
 
 @endsection

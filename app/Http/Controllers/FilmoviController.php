@@ -14,7 +14,7 @@ class FilmoviController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $filmovi = Filmovi::paginate(10);
+        $filmovi = Filmovi::paginate(30)->sortBy('naslov');
         return view('filmovis.index', compact('filmovi'));
     }
 
@@ -24,7 +24,7 @@ class FilmoviController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        $lista_zanrova = Zanr::all()->sortBy('name');
+        $lista_zanrova = Zanr::all();
         return view('filmovis.create', compact('lista_zanrova'));
     }
 

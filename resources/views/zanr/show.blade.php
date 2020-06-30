@@ -20,7 +20,9 @@
     <h5>
         <ul>
     <li>
-        &nbsp;&nbsp; {{$f->naslov}} ({{$f->godina }}) 
+        &nbsp; <a href='{{url("/filmovis/{$f->filmovi_id}")}}'> 
+            {{$f->naslov}} ({{$f->godina }})</a>
+        
     </li>
     </ul>
     </h5>

@@ -29,7 +29,7 @@
     <h5>
         <ul>
     <li>
-        &nbsp;&nbsp;<a href='{{url("/zanrs/{$zanr->zanr_id}")}}'> {{$zanr->naziv }} </a>
+       &nbsp;<a href='{{url("/zanrs/{$zanr->zanr_id}")}}'> {{$zanr->naziv }} </a>
     </li>
     </ul>
     </h5>
