@@ -44,7 +44,7 @@ class ZanrController extends Controller {
      */
     public function show(Zanr $zanr) {
         $lista_filmova_odabranog_zanra = $zanr->filmovi()->get();
-        return view('zanr.show', compact('lista_filmova_odabranog_zanra'));
+        return view('zanr.show', ['zanrovi' => $zanr], compact('lista_filmova_odabranog_zanra'));
     }
 
     /**

@@ -13,6 +13,11 @@ class FilmoviController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
+    public function filter($filter) {
+        $filmovi = Filmovi::where('naslov', 'like', $filter.'%')->paginate(10);
+        return view('filmovis.index', compact('filmovi'));
+    
+    }
     public function index() {
         $filmovi = Filmovi::paginate(30)->sortBy('naslov');
         return view('filmovis.index', compact('filmovi'));

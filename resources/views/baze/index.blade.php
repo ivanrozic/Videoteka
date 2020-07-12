@@ -61,7 +61,7 @@ $firstStringFilter=array_unique ($firstStringCharacter);
             <tbody>@foreach ($filmovi ?? '' as $f)
                 <tr>
                     <th> <img src="{{ asset('images/' . $f->slika) }}" widht="200" height="200"></th>
-                    <th><a href='{{url("/filmovis/{$f->filmovi_id}")}}'> {{$f->naslov }}</a></th>
+                    <th> {{$f->naslov }}</th>
                     <th> {{$f->godina }}</th>
                     <th> {{$f->trajanje }}</th>
                     <th> <form style="display:inline" class="form-inline" name="actor_delete" 

@@ -11,7 +11,7 @@
 </div>
 @endif 
 
-<h3>{{$lista_filmova_odabranog_zanra->first()->zanr()->first()->naziv}}:</h3>
+<h3>{{$zanrovi->naziv}} ({{$lista_filmova_odabranog_zanra->count()}}) :</h3>
 <br>
 
     @foreach ($lista_filmova_odabranog_zanra ?? '' as $f)
